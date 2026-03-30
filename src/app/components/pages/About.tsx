@@ -1,100 +1,120 @@
 import { motion } from "motion/react";
-import { Heart, Users, Home, Sparkles } from "lucide-react";
+import { Moon, Target, Heart, BookOpen, Sparkles, ShoppingBag } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 
 export function About() {
-  const timeline = [
+  const mission = [
     {
-      year: "2018",
-      title: "A Dream Begins",
-      description: "As new parents, we struggled to find quality Islamic toys for our children. We decided to create them ourselves in our small home workshop."
+      icon: BookOpen,
+      title: "Educate",
+      description: "Deepen children's knowledge of Islamic culture, art, history, and civilization through high-quality products",
+    },
+    {
+      icon: Sparkles,
+      title: "Inspire",
+      description: "Inspire the next generation to take pride in their Islamic heritage and identity",
+    },
+    {
+      icon: Heart,
+      title: "Engage",
+      description: "Create meaningful family experiences that bring parents and children closer through shared Islamic values",
+    },
+    {
+      icon: Target,
+      title: "Impact",
+      description: "Increase youth engagement with the traditions and rich heritage of the Muslim world",
+    },
+  ];
+
+  const milestones = [
+    {
+      year: "2019",
+      label: "'19",
+      title: "Sweet Moon is Founded",
+      description: "Sweet Moon was established in March 2019 in Omaha, Nebraska — born from a desire to give Muslim families high-quality educational products centered around Ramadan.",
     },
     {
       year: "2020",
-      title: "Growing Together",
-      description: "What started as toys for our own children became a passion. Friends and family began requesting our handcrafted pieces."
+      label: "'20",
+      title: "Ramadan Legacy Planner Launches",
+      description: "The Ramadan Legacy Planner series launches — a powerful, practical planner with reflective exercises that quickly becomes a family favorite.",
+    },
+    {
+      year: "2021",
+      label: "'21",
+      title: "The Ramadan Village Collection",
+      description: "Sweet Moon introduces the beloved Ramadan Village Collection — handmade egg caps for Sahoor that bring magic and warmth to the family table.",
     },
     {
       year: "2022",
-      title: "Little Hearts is Born",
-      description: "We officially launched Little Hearts, dedicated to helping Muslim families nurture their children's faith through play."
+      label: "'22",
+      title: "My Little Legacy Kids Journal",
+      description: "Expanding to serve younger Muslims, Sweet Moon launches the My Little Legacy Ramadan Kids Journal & Activity Book.",
     },
     {
-      year: "2026",
-      title: "Serving Families Worldwide",
-      description: "Today, we're blessed to serve over 100 families, with each toy still handcrafted with the same love and care."
-    }
-  ];
-
-  const familyMembers = [
-    {
-      name: "Amira & Hassan",
-      role: "Founders & Parents",
-      description: "We started this journey as parents wanting the best for our children's Islamic education"
+      year: "Today",
+      label: "✦",
+      title: "Growing with Families Nationwide",
+      description: "Sweet Moon continues to grow, serving Muslim families across the United States with meaningful products that design lifetime Ramadan memories.",
     },
-    {
-      name: "Grandma Fatima",
-      role: "Master Seamstress",
-      description: "Brings 40 years of crafting experience and endless love to every soft toy"
-    },
-    {
-      name: "Uncle Yusuf",
-      role: "Woodwork Artisan",
-      description: "Creates beautiful wooden toys with precision and traditional craftsmanship"
-    }
   ];
 
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-800 text-white py-24 overflow-hidden">
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="absolute top-10 right-10 size-80 rounded-full border-2 border-white" />
+          <div className="absolute -bottom-10 -left-10 size-56 rounded-full border-2 border-white" />
+        </div>
+        <div className="absolute top-8 right-12 opacity-10 pointer-events-none">
+          <Moon className="size-48 text-amber-200 fill-amber-100" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-3xl mx-auto"
+            className="max-w-3xl"
           >
-            <Heart className="size-16 mx-auto mb-6 fill-white" />
-            <h1 className="text-5xl font-bold mb-6">Our Story</h1>
-            <p className="text-xl text-emerald-100">
-              A family's journey to create meaningful Islamic toys that bring joy, 
-              learning, and faith into children's lives
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-8">
+              <Moon className="size-4 text-amber-300 fill-amber-300" />
+              <span className="text-sm text-amber-200 font-medium">Est. March 2019 · Omaha, Nebraska</span>
+            </div>
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6">Our Story</h1>
+            <p className="text-xl text-emerald-100 leading-relaxed max-w-2xl">
+              Sweet Moon was founded with a single purpose — to help Muslim families design lifetime Ramadan memories through beautiful, meaningful products.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Story Section */}
+      {/* Origin Story */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
               <h2 className="text-4xl font-bold text-emerald-900 mb-6">
-                From Our Hearts to Yours
+                Designing Lifetime Ramadan Memories
               </h2>
-              <div className="space-y-4 text-lg text-gray-700">
+              <div className="space-y-5 text-lg text-gray-600 leading-relaxed">
                 <p>
-                  Our journey began in 2018 when we became parents. Like many Muslim families, 
-                  we wanted toys that would not only entertain our children but also nurture 
-                  their Islamic identity and values.
+                  Sweet Moon was established in <strong className="text-emerald-800">March 2019</strong> in Omaha, Nebraska, with a clear and heartfelt mission: to help Muslim families create meaningful, lasting Ramadan experiences.
                 </p>
                 <p>
-                  We searched everywhere but couldn't find toys that combined quality craftsmanship 
-                  with authentic Islamic teachings. So we decided to make them ourselves.
+                  We design and market high-quality educational products, apparel, and decorative items — all centered around increasing youth engagement with the traditions and heritage of the Muslim world.
                 </p>
                 <p>
-                  What started in our small home workshop with a simple set of wooden alphabet blocks 
-                  has grown into Little Hearts – a family business dedicated to creating meaningful, 
-                  beautiful toys for Muslim children everywhere.
+                  Our focus is simple: provide resources that enable families to{" "}
+                  <strong className="text-emerald-700">engage</strong>,{" "}
+                  <strong className="text-emerald-700">inspire</strong>, and{" "}
+                  <strong className="text-emerald-700">educate</strong> their children about Islamic culture, art, history, and civilization.
                 </p>
                 <p>
-                  Every toy we create is touched by multiple members of our family. From Grandma Fatima's 
-                  gentle stitching to Uncle Yusuf's precise woodwork, each piece carries our love, 
-                  care, and prayers for the children who will play with them.
+                  From our beloved Ramadan Legacy Planner series to our handcrafted Ramadan Village egg caps — every Sweet Moon product is thoughtfully created to bring beauty, meaning, and learning into your family's Ramadan.
                 </p>
               </div>
             </motion.div>
@@ -105,150 +125,137 @@ export function About() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1628270251031-9262ac25387b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                  alt="Our family workshop"
+                  src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900"
+                  alt="Ramadan family memories"
                   className="w-full h-[500px] object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/30 to-transparent rounded-3xl" />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white p-5 rounded-2xl shadow-xl border border-gray-100">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-emerald-700 mb-1">2019</div>
+                  <div className="text-sm text-gray-500 font-medium leading-tight">Founded in<br />Omaha, NE</div>
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Mission */}
       <section className="py-20 bg-gradient-to-br from-emerald-50 to-teal-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-14"
           >
-            <h2 className="text-4xl font-bold text-emerald-900 mb-4">
-              Our Journey
-            </h2>
-            <p className="text-xl text-gray-600">
-              Growing together, one toy at a time
+            <h2 className="text-4xl font-bold text-emerald-900 mb-4">Our Mission</h2>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+              Everything we do is in service of one goal: helping Muslim families thrive through meaningful engagement with Islamic heritage.
             </p>
           </motion.div>
 
-          <div className="space-y-12">
-            {timeline.map((milestone, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {mission.map((item, index) => (
               <motion.div
-                key={milestone.year}
+                key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="relative pl-8 border-l-4 border-emerald-300"
+                className="bg-white p-7 rounded-2xl shadow-sm hover:shadow-lg transition-shadow border border-emerald-100"
               >
-                <div className="absolute -left-4 top-0 bg-emerald-600 text-white size-8 rounded-full flex items-center justify-center font-bold">
-                  {index + 1}
+                <div className="bg-gradient-to-br from-emerald-600 to-teal-700 p-3 rounded-xl w-fit mb-4">
+                  <item.icon className="size-6 text-white" />
                 </div>
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <div className="text-emerald-600 font-semibold text-lg mb-2">
-                    {milestone.year}
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    {milestone.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {milestone.description}
-                  </p>
-                </div>
+                <h3 className="text-xl font-bold text-emerald-900 mb-2">{item.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Family Members */}
+      {/* Timeline */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-14"
           >
-            <Users className="size-12 text-emerald-600 mx-auto mb-4" />
-            <h2 className="text-4xl font-bold text-emerald-900 mb-4">
-              Meet Our Family
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              The loving hands behind every toy
-            </p>
+            <h2 className="text-4xl font-bold text-emerald-900 mb-4">Our Journey</h2>
+            <p className="text-xl text-gray-500">Growing together, one Ramadan at a time</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {familyMembers.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-xl text-center"
-              >
-                <div className="bg-gradient-to-br from-emerald-600 to-teal-600 size-24 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <Home className="size-12 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {member.name}
-                </h3>
-                <div className="text-emerald-600 font-semibold mb-3">
-                  {member.role}
-                </div>
-                <p className="text-gray-600">
-                  {member.description}
-                </p>
-              </motion.div>
-            ))}
+          <div className="relative">
+            <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-emerald-100" />
+            <div className="space-y-8">
+              {milestones.map((milestone, index) => (
+                <motion.div
+                  key={milestone.year}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative pl-16"
+                >
+                  <div className="absolute left-0 top-1 bg-emerald-700 text-white size-12 rounded-full flex items-center justify-center font-bold text-xs shadow-md">
+                    {milestone.label}
+                  </div>
+                  <div className="bg-white border border-gray-100 hover:border-emerald-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+                    <div className="text-emerald-600 font-bold text-sm mb-1">{milestone.year}</div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
+                    <p className="text-gray-500 leading-relaxed text-sm">{milestone.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Workshop Image */}
-      <section className="py-20 bg-gradient-to-br from-orange-50 to-amber-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="rounded-2xl overflow-hidden shadow-2xl"
-            >
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1560831340-b9679dc9e9f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                alt="Our workshop"
-                className="w-full h-[400px] object-cover"
-              />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <Sparkles className="size-12 text-amber-500 mb-4" />
-              <h2 className="text-3xl font-bold text-emerald-900 mb-4">
-                Our Workshop
-              </h2>
-              <p className="text-lg text-gray-700 mb-6">
-                Every morning, our workshop comes alive with the sounds of crafting, laughter, 
-                and sometimes the pitter-patter of little feet (our own children love to "help"!). 
-                It's a warm, welcoming space where tradition meets creativity.
-              </p>
-              <p className="text-lg text-gray-700">
-                We believe in slow, intentional creation. Each toy takes time – time to select 
-                the right materials, time to craft with precision, and time to ensure every 
-                detail is perfect. Because we know these toys will become part of your family's 
-                precious memories.
-              </p>
-            </motion.div>
-          </div>
+      {/* Contact CTA */}
+      <section className="py-16 bg-gradient-to-br from-emerald-900 to-teal-800 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Moon className="size-14 mx-auto mb-6 text-amber-400 fill-amber-300" />
+            <h2 className="text-3xl font-bold mb-3">Connect With Sweet Moon</h2>
+            <p className="text-emerald-200 mb-2">📍 16360 R St. Omaha, NE 68135</p>
+            <p className="text-emerald-200 mb-8">
+              <a href="mailto:info@sweetmoon.us" className="underline hover:text-white transition-colors">
+                info@sweetmoon.us
+              </a>
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="https://sweetmoon.us"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold px-8 py-4 rounded-xl transition-all"
+              >
+                <ShoppingBag className="size-4" />
+                Shop on sweetmoon.us
+              </a>
+              <a
+                href="https://instagram.com/sweet_moon_llc/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl transition-all"
+              >
+                Follow on Instagram
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

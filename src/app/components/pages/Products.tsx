@@ -1,245 +1,319 @@
 import { motion } from "motion/react";
-import { BookOpen, Blocks, Heart, Palette, Star, Gift } from "lucide-react";
+import { Moon, BookOpen, Shirt, Star, Gift, ShoppingBag, ExternalLink } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 
+type Product = {
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+  soldOut?: boolean;
+  tag: string;
+};
+
+type Category = {
+  id: number;
+  name: string;
+  icon: React.ElementType;
+  description: string;
+  products: Product[];
+};
+
 export function Products() {
-  const categories = [
+  const categories: Category[] = [
     {
       id: 1,
-      name: "Learning & Education",
-      icon: BookOpen,
-      description: "Interactive toys that teach Arabic, Quran verses, and Islamic knowledge",
+      name: "Ramadan Planners & Journals",
+      icon: Moon,
+      description: "Powerful, reflective planners for adults and activity journals for children",
       products: [
         {
-          name: "Arabic Alphabet Blocks",
-          description: "Wooden blocks with letters, words, and beautiful illustrations",
-          price: "$34.99",
-          image: "https://images.unsplash.com/photo-1725297951080-47e72ef3f788?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "2-5 years"
+          name: "Emerald Edition Ramadan Legacy Planner",
+          description: "A beautifully designed planner with powerful reflective exercises for self-understanding and spiritual goal-setting throughout Ramadan.",
+          price: "$30.00",
+          image: "https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          soldOut: true,
+          tag: "Emerald Edition",
         },
         {
-          name: "Quran Verse Puzzle Set",
-          description: "Engaging puzzles featuring short surahs and their meanings",
-          price: "$28.99",
-          image: "https://images.unsplash.com/photo-1773213075043-86954c638a98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "4-8 years"
+          name: "Night Edition Ramadan Legacy Planner",
+          description: "A stunning night-themed Ramadan planner designed for evening reflection and deep spiritual growth.",
+          price: "$30.00",
+          image: "https://images.unsplash.com/photo-1535463731090-e77cb41a6aa7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          soldOut: true,
+          tag: "Night Edition",
         },
         {
-          name: "Islamic Story Books",
-          description: "Beautifully illustrated stories of prophets and Islamic values",
-          price: "$44.99",
-          image: "https://images.unsplash.com/photo-1647621129185-cc09bc212ff1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "3-7 years"
-        }
-      ]
+          name: "Paradise Green Edition Ramadan Legacy Planner",
+          description: "Inspired by the gardens of paradise — a serene, uplifting planner for your most meaningful Ramadan yet.",
+          price: "$30.00",
+          image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          soldOut: true,
+          tag: "Paradise Edition",
+        },
+        {
+          name: "Rose Edition Ramadan Legacy Planner",
+          description: "Elegant rose design with meaningful prompts to guide your spiritual journey throughout the blessed month.",
+          price: "$30.00",
+          image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          soldOut: true,
+          tag: "Rose Edition",
+        },
+        {
+          name: "My Little Legacy: Ramadan Kids Journal & Activity Book",
+          description: "A fun-filled Ramadan journal specially crafted for children — activities, reflections, and memories all in one beautiful book.",
+          price: "$32.00",
+          image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          soldOut: true,
+          tag: "For Kids",
+        },
+      ],
     },
     {
       id: 2,
-      name: "Prayer & Worship",
-      icon: Heart,
-      description: "Toys that introduce children to the beauty of Islamic worship",
+      name: "Books",
+      icon: BookOpen,
+      description: "Educational books celebrating Islamic culture, history, and civilization for young readers",
       products: [
         {
-          name: "My First Prayer Mat Set",
-          description: "Soft, colorful prayer mat with guidance for little ones",
-          price: "$39.99",
-          image: "https://images.unsplash.com/photo-1653290230795-64b812fa392c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "3-7 years"
+          name: "Muslim Civilization Set by National Geographic Kids",
+          description: "An engaging National Geographic Kids series exploring the rich history and extraordinary contributions of Muslim civilizations.",
+          price: "$18.00",
+          image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "National Geographic Kids",
         },
         {
-          name: "Prayer Time Learning Clock",
-          description: "Interactive clock teaching salah times and daily routines",
-          price: "$32.99",
-          image: "https://images.unsplash.com/photo-1647621129185-cc09bc212ff1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "4-10 years"
+          name: "Muslim Culture Set by Hena Khan",
+          description: "Award-winning books by celebrated author Hena Khan that beautifully portray Muslim culture, family, and values for young readers.",
+          price: "$15.00",
+          image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "By Hena Khan",
         },
-        {
-          name: "Wudu Practice Set",
-          description: "Fun and educational set for learning ablution steps",
-          price: "$26.99",
-          image: "https://images.unsplash.com/photo-1628270251031-9262ac25387b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "3-8 years"
-        }
-      ]
+      ],
     },
     {
       id: 3,
-      name: "Creative & Arts",
-      icon: Palette,
-      description: "Express creativity with Islamic art and calligraphy",
+      name: "Ramadan Apparel",
+      icon: Shirt,
+      description: "Meaningful Ramadan t-shirts and sweatshirts carrying messages of kindness, strength, and peace",
       products: [
         {
-          name: "Calligraphy Starter Kit",
-          description: "Complete set for learning beautiful Arabic calligraphy",
-          price: "$36.99",
-          image: "https://images.unsplash.com/photo-1773213075043-86954c638a98?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "6-12 years"
+          name: "#BeKind, #BeStrong — Ramadan Premium T-Shirt",
+          description: "A premium Ramadan tee with an empowering message of kindness and strength. Wear your values this Ramadan.",
+          price: "$20.00",
+          image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "T-Shirt",
         },
         {
-          name: "Islamic Pattern Craft Set",
-          description: "Create stunning geometric Islamic patterns",
-          price: "$29.99",
-          image: "https://images.unsplash.com/photo-1771057761766-6b78fe492a29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "5-10 years"
+          name: "Peace Be Upon You — Ramadan Premium T-Shirt",
+          description: "Spread the Islamic greeting of peace wherever you go this Ramadan with this beautiful premium tee.",
+          price: "$20.00",
+          image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "T-Shirt",
         },
         {
-          name: "Mosque Building Blocks",
-          description: "Wooden blocks to build beautiful mosque structures",
-          price: "$48.99",
-          image: "https://images.unsplash.com/photo-1560831340-b9679dc9e9f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "4-10 years"
-        }
-      ]
+          name: "Be Kind, Be Strong — Ramadan Long Sleeve T-Shirt",
+          description: "Stay warm and inspired this Ramadan with our long-sleeve version of the beloved Be Kind, Be Strong design.",
+          price: "$23.00",
+          image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "Long Sleeve",
+        },
+        {
+          name: "Be Kind, Be Strong — Ramadan Sweatshirt",
+          description: "Cozy and meaningful — a perfect sweatshirt for Ramadan nights. Wear your values all season long.",
+          price: "$30.00",
+          image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "Sweatshirt",
+        },
+      ],
     },
     {
       id: 4,
-      name: "Special Collections",
-      icon: Gift,
-      description: "Curated gift sets perfect for special occasions",
+      name: "The Ramadan Village Collection",
+      icon: Star,
+      description: "Handmade egg caps for Sahoor fun — bringing magic and tradition to your family table",
       products: [
         {
-          name: "Ramadan Joy Bundle",
-          description: "Complete set for making Ramadan extra special",
-          price: "$64.99",
-          image: "https://images.unsplash.com/photo-1640117870130-a35c8203a9e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "3-8 years"
+          name: "Early Birds of the Ramadan Village",
+          description: "Charming handmade egg caps celebrating the early risers of Sahoor — a sweet Ramadan tradition for the family breakfast table.",
+          price: "$15.00",
+          image: "https://images.unsplash.com/photo-1601524909162-ae8725290836?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "Handmade",
         },
         {
-          name: "New Muslim Baby Gift Set",
-          description: "Beautiful collection for welcoming a new baby",
-          price: "$54.99",
-          image: "https://images.unsplash.com/photo-1628270251031-9262ac25387b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "0-3 years"
+          name: "Flowers of the Ramadan Village",
+          description: "Beautiful floral-themed egg caps that bring color, joy, and beauty to your Sahoor table this Ramadan.",
+          price: "$15.00",
+          image: "https://images.unsplash.com/photo-1490750967868-88df5691cc0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "Handmade",
         },
         {
-          name: "Eid Celebration Kit",
-          description: "Everything needed for a joyful Eid celebration",
-          price: "$59.99",
-          image: "https://images.unsplash.com/photo-1647621129185-cc09bc212ff1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-          ages: "4-10 years"
-        }
-      ]
-    }
+          name: "Heroes of the Ramadan Village",
+          description: "Celebrate the heroes of Ramadan with these fun, character-inspired handmade egg caps loved by kids.",
+          price: "$15.00",
+          image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "Baby & Toddler",
+        },
+      ],
+    },
+    {
+      id: 5,
+      name: "Gift Wrapping",
+      icon: Gift,
+      description: "Make your Sweet Moon gift extra special",
+      products: [
+        {
+          name: "Gift Wrapping",
+          description: "Add a special touch to any Sweet Moon purchase with beautiful gift wrapping — perfect for Ramadan gifts, Eid celebrations, and every meaningful occasion.",
+          price: "$4.00",
+          image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
+          tag: "Add-on",
+        },
+      ],
+    },
   ];
 
   return (
-    <div className="bg-gradient-to-br from-emerald-50 to-teal-50 min-h-screen py-12">
-      {/* Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center"
-        >
-          <h1 className="text-5xl font-bold text-emerald-900 mb-4">
-            Our Toy Collections
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Every toy is lovingly handcrafted in our family workshop using natural, 
-            non-toxic materials. Designed to spark curiosity and nurture faith.
-          </p>
-        </motion.div>
+    <div className="bg-white min-h-screen">
+      {/* Hero Header */}
+      <div className="bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-800 text-white py-20 relative overflow-hidden">
+        <div className="absolute top-6 right-10 opacity-10 pointer-events-none">
+          <Moon className="size-44 text-amber-200 fill-amber-100" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl"
+          >
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-6">
+              <ShoppingBag className="size-4 text-amber-300" />
+              <span className="text-sm text-amber-200 font-medium">Sweet Moon Collections</span>
+            </div>
+            <h1 className="text-5xl font-bold mb-4">All Products</h1>
+            <p className="text-xl text-emerald-100 mb-8 max-w-2xl">
+              Designed to help Muslim families create meaningful Ramadan memories — planners, books, apparel, and more.
+            </p>
+            <a
+              href="https://sweetmoon.us/collections/all"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold px-8 py-4 rounded-xl transition-all shadow-lg"
+            >
+              <ShoppingBag className="size-4" />
+              Shop on sweetmoon.us
+              <ExternalLink className="size-4" />
+            </a>
+          </motion.div>
+        </div>
       </div>
 
       {/* Categories */}
-      {categories.map((category, categoryIndex) => (
-        <section key={category.id} className="mb-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {categories.map((category) => (
+          <section key={category.id} className="mb-20">
             {/* Category Header */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="flex items-center gap-4 mb-8 pb-5 border-b border-gray-100"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="bg-gradient-to-br from-emerald-600 to-teal-600 p-3 rounded-lg">
-                  <category.icon className="size-8 text-white" />
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-emerald-900">
-                    {category.name}
-                  </h2>
-                  <p className="text-gray-600">{category.description}</p>
-                </div>
+              <div className="bg-gradient-to-br from-emerald-600 to-teal-700 p-3 rounded-xl shadow-sm">
+                <category.icon className="size-6 text-white" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-emerald-900">{category.name}</h2>
+                <p className="text-gray-500 text-sm">{category.description}</p>
               </div>
             </motion.div>
 
             {/* Products Grid */}
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {category.products.map((product, productIndex) => (
                 <motion.div
                   key={product.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: productIndex * 0.1 }}
-                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all group"
+                  transition={{ delay: productIndex * 0.07 }}
+                  className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 group"
                 >
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-52 overflow-hidden bg-gray-50">
                     <ImageWithFallback
                       src={product.image}
                       alt={product.name}
-                      className="size-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className={`size-full object-cover transition-transform duration-500 ${product.soldOut ? "grayscale-[30%]" : "group-hover:scale-105"}`}
                     />
-                    <div className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1.5 rounded-full font-semibold">
-                      {product.price}
-                    </div>
-                    <div className="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1.5 rounded-full text-sm">
-                      {product.ages}
-                    </div>
+                    {product.soldOut && (
+                      <div className="absolute inset-0 bg-gray-900/40 flex items-center justify-center">
+                        <span className="bg-white text-gray-800 font-bold px-4 py-2 rounded-full text-sm shadow">
+                          Sold Out
+                        </span>
+                      </div>
+                    )}
+                    {!product.soldOut && (
+                      <div className="absolute top-3 left-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+                        {product.tag}
+                      </div>
+                    )}
+                    {product.soldOut && (
+                      <div className="absolute bottom-3 left-3 bg-black/50 text-white text-xs font-medium px-3 py-1 rounded-full">
+                        {product.tag}
+                      </div>
+                    )}
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-600 mb-4">
-                      {product.description}
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <button className="flex-1 bg-emerald-600 text-white py-2 px-4 rounded-lg hover:bg-emerald-700 transition-colors">
-                        Add to Cart
-                      </button>
-                      <button className="bg-emerald-50 text-emerald-600 p-2 rounded-lg hover:bg-emerald-100 transition-colors">
-                        <Heart className="size-5" />
-                      </button>
+                  <div className="p-5">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <h3 className="text-base font-bold text-gray-900 leading-snug">{product.name}</h3>
+                      <span className="text-emerald-700 font-bold text-sm shrink-0">{product.price}</span>
                     </div>
+                    <p className="text-gray-500 text-sm mb-4 leading-relaxed line-clamp-2">{product.description}</p>
+                    {product.soldOut ? (
+                      <span className="text-sm text-gray-400 font-medium">Currently Unavailable</span>
+                    ) : (
+                      <a
+                        href="https://sweetmoon.us/collections/all"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 hover:text-emerald-700 transition-colors group/link"
+                      >
+                        View on Shop
+                        <ExternalLink className="size-3 group-hover/link:translate-x-0.5 transition-transform" />
+                      </a>
+                    )}
                   </div>
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
-      ))}
+          </section>
+        ))}
+      </div>
 
-      {/* Quality Promise */}
-      <section className="bg-white py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Star className="size-12 text-amber-500 fill-amber-500 mx-auto mb-4" />
-            <h2 className="text-3xl font-bold text-emerald-900 mb-4">
-              Our Quality Promise
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              All our toys are made with natural wood, non-toxic paints, and eco-friendly materials. 
-              Every piece is quality-checked by our family to ensure it meets our high standards 
-              of safety and craftsmanship.
+      {/* Shop CTA */}
+      <section className="bg-gradient-to-br from-emerald-900 to-teal-800 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Moon className="size-12 text-amber-400 fill-amber-300 mx-auto mb-4" />
+            <h2 className="text-3xl font-bold mb-3">Ready to Shop?</h2>
+            <p className="text-emerald-200 mb-8 text-lg">
+              Visit sweetmoon.us to browse the full collection and place your order
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <div className="bg-emerald-50 px-6 py-3 rounded-full text-emerald-700 font-semibold">
-                ✓ Natural Materials
-              </div>
-              <div className="bg-emerald-50 px-6 py-3 rounded-full text-emerald-700 font-semibold">
-                ✓ Non-Toxic Paints
-              </div>
-              <div className="bg-emerald-50 px-6 py-3 rounded-full text-emerald-700 font-semibold">
-                ✓ Safety Tested
-              </div>
-              <div className="bg-emerald-50 px-6 py-3 rounded-full text-emerald-700 font-semibold">
-                ✓ Handcrafted with Care
-              </div>
-            </div>
-          </div>
+            <a
+              href="https://sweetmoon.us"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold px-10 py-4 rounded-xl transition-all shadow-lg"
+            >
+              <ShoppingBag className="size-5" />
+              Visit sweetmoon.us
+              <ExternalLink className="size-4" />
+            </a>
+          </motion.div>
         </div>
       </section>
     </div>

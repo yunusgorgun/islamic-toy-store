@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
-import { Mail, MapPin, Phone, Send, MessageCircle, Clock } from "lucide-react";
-import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { Mail, MapPin, Send, MessageCircle, Clock, Moon } from "lucide-react";
 import { useState } from "react";
 
 export function Contact() {
@@ -23,21 +22,24 @@ export function Contact() {
     {
       icon: Mail,
       title: "Email Us",
-      detail: "hello@littlehearts.com",
-      description: "We typically respond within 24 hours"
+      detail: "info@sweetmoon.us",
+      description: "We typically respond within 24 hours",
+      href: "mailto:info@sweetmoon.us",
     },
     {
-      icon: Phone,
-      title: "Call Us",
-      detail: "+1 (555) 123-4567",
-      description: "Mon-Fri, 9am-5pm EST"
+      icon: Moon,
+      title: "Follow Us",
+      detail: "@sweet_moon_llc",
+      description: "Stay connected on Instagram & Facebook",
+      href: "https://instagram.com/sweet_moon_llc/",
     },
     {
       icon: MapPin,
-      title: "Visit Our Workshop",
-      detail: "By Appointment Only",
-      description: "We'd love to show you how we make our toys!"
-    }
+      title: "Our Location",
+      detail: "Omaha, NE 68135",
+      description: "16360 R St. Omaha, Nebraska",
+      href: null,
+    },
   ];
 
   const faqs = [
@@ -62,19 +64,23 @@ export function Contact() {
   return (
     <div className="bg-white">
       {/* Header */}
-      <section className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-800 text-white py-20 relative overflow-hidden">
+        <div className="absolute top-6 right-10 opacity-10 pointer-events-none">
+          <Moon className="size-44 text-amber-200 fill-amber-100" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center"
+            className="max-w-2xl"
           >
-            <MessageCircle className="size-16 mx-auto mb-6" />
-            <h1 className="text-5xl font-bold mb-4">
-              Get in Touch
-            </h1>
-            <p className="text-xl text-emerald-50 max-w-3xl mx-auto">
-              We'd love to hear from you! Whether you have questions, feedback, or just want to say hello
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full mb-6">
+              <MessageCircle className="size-4 text-amber-300" />
+              <span className="text-sm text-amber-200 font-medium">Sweet Moon · Omaha, Nebraska</span>
+            </div>
+            <h1 className="text-5xl font-bold mb-4">Get in Touch</h1>
+            <p className="text-xl text-emerald-100">
+              We'd love to hear from you! Questions, feedback, wholesale inquiries — we're here.
             </p>
           </motion.div>
         </div>
@@ -91,20 +97,20 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow"
+                className="bg-white p-8 rounded-2xl shadow-md text-center hover:shadow-xl transition-all border border-gray-100"
               >
-                <div className="bg-gradient-to-br from-emerald-600 to-teal-600 p-4 rounded-lg w-fit mx-auto mb-4">
-                  <info.icon className="size-8 text-white" />
+                <div className="bg-gradient-to-br from-emerald-700 to-teal-700 p-4 rounded-xl w-fit mx-auto mb-4">
+                  <info.icon className="size-7 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {info.title}
-                </h3>
-                <p className="text-emerald-600 font-semibold mb-2">
-                  {info.detail}
-                </p>
-                <p className="text-gray-600 text-sm">
-                  {info.description}
-                </p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{info.title}</h3>
+                {info.href ? (
+                  <a href={info.href} target={info.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="text-emerald-600 font-semibold mb-2 block hover:text-emerald-700 transition-colors">
+                    {info.detail}
+                  </a>
+                ) : (
+                  <p className="text-emerald-600 font-semibold mb-2">{info.detail}</p>
+                )}
+                <p className="text-gray-500 text-sm">{info.description}</p>
               </motion.div>
             ))}
           </div>
@@ -204,53 +210,69 @@ export function Contact() {
               </form>
             </motion.div>
 
-            {/* Image & Info */}
+            {/* Info Cards */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-8"
+              className="space-y-6"
             >
-              <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1628270251031-9262ac25387b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-                  alt="Our family"
-                  className="w-full h-[400px] object-cover"
-                />
-              </div>
-
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-xl">
-                <Clock className="size-10 text-amber-600 mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  Business Hours
-                </h3>
-                <div className="space-y-2 text-gray-700">
-                  <div className="flex justify-between">
-                    <span>Monday - Friday</span>
-                    <span className="font-semibold">9:00 AM - 5:00 PM EST</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Saturday</span>
-                    <span className="font-semibold">10:00 AM - 2:00 PM EST</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Sunday</span>
-                    <span className="font-semibold">Closed</span>
-                  </div>
+              {/* Sweet Moon About Card */}
+              <div className="bg-gradient-to-br from-emerald-900 to-teal-800 text-white p-8 rounded-2xl relative overflow-hidden">
+                <div className="absolute top-4 right-4 opacity-10">
+                  <Moon className="size-24 text-amber-200 fill-amber-100" />
                 </div>
+                <Moon className="size-10 text-amber-400 fill-amber-300 mb-4" />
+                <h3 className="text-2xl font-bold mb-2">Sweet Moon</h3>
+                <p className="text-emerald-200 text-sm leading-relaxed mb-4">
+                  Designing Lifetime Ramadan Memories — a family-owned business based in Omaha, Nebraska, founded in March 2019.
+                </p>
+                <a
+                  href="https://sweetmoon.us"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold px-6 py-3 rounded-xl text-sm transition-all"
+                >
+                  Visit sweetmoon.us
+                </a>
               </div>
 
-              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-xl">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  Visit Our Workshop
-                </h3>
-                <p className="text-gray-700 mb-4">
-                  We welcome families to visit our workshop and see how our toys are made! 
-                  Please schedule an appointment in advance.
+              {/* Response Info */}
+              <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl border border-amber-100">
+                <Clock className="size-8 text-amber-600 mb-4" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Response Time</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  We aim to respond to all inquiries within <strong>24 hours</strong>. For faster support, reach out via email at{" "}
+                  <a href="mailto:info@sweetmoon.us" className="text-emerald-600 font-semibold hover:underline">
+                    info@sweetmoon.us
+                  </a>
                 </p>
-                <button className="text-emerald-600 hover:text-emerald-700 font-semibold">
-                  Schedule a Visit →
-                </button>
+              </div>
+
+              {/* Social Links */}
+              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-2xl border border-emerald-100">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Follow Sweet Moon</h3>
+                <p className="text-gray-500 text-sm mb-5">
+                  Stay up to date with new products, Ramadan tips, and behind-the-scenes content.
+                </p>
+                <div className="flex gap-3">
+                  <a
+                    href="https://instagram.com/sweet_moon_llc/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-white border border-gray-200 text-gray-700 hover:border-emerald-400 hover:text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all"
+                  >
+                    Instagram
+                  </a>
+                  <a
+                    href="https://facebook.com/sweetmoonllc"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-white border border-gray-200 text-gray-700 hover:border-emerald-400 hover:text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all"
+                  >
+                    Facebook
+                  </a>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -323,8 +345,8 @@ export function Contact() {
               We're Here to Help
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Our family is committed to providing excellent customer service. 
-              When you reach out, you're talking directly to the people who make your toys.
+              Sweet Moon is a family-owned business and we take customer care personally.
+              When you reach out, you're talking directly to the people behind every product.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-center">
               <div className="bg-emerald-50 px-8 py-6 rounded-xl">
